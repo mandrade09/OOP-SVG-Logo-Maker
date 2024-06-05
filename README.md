@@ -83,9 +83,7 @@ expect(shape.render()).toEqual('<polygon points="150, 18 244, 182 56, 182" fill=
 
 ## Project View
 
-![Terminal View Running App](<Assets/images/README Generator Screenshot 1.jpg>)
-
-![Generated README View](<Assets/images/README Generator Screenshot 2.jpg>)
+![SGV Logo Maker Screenshot](<images/SGV Logo Maker Screenshot.jpg>)
 
 
 
