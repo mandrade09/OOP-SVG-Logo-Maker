@@ -2,15 +2,23 @@
 
 // index.js
 
+// Import the inquirer module for user input and fs module for file system operations
 const inquirer = require('inquirer');
 const fs = require('fs');
+
+
+// Import the shape classes
 const { Circle, Triangle, Square } = require('./lib/shapes');
 
+
+// Define the questions to prompt the user
 const questions = [
   {
     type: 'input',
     name: 'text',
     message: 'Enter up to three characters for the logo:',
+
+    // Validate that the input is no more than 3 characters
     validate: input => input.length <= 3 || 'Text must be up to three characters.',
   },
   {
@@ -32,9 +40,12 @@ const questions = [
 ];
 
 
+// Prompt the user with the defined questions
+
 inquirer.prompt(questions).then(answers => {
   const { text, textColor, shape, shapeColor } = answers;
 
+  // Create an instance of the selected shape with the specified color
   let shapeInstance;
   switch (shape) {
     case 'Circle':
@@ -48,7 +59,8 @@ inquirer.prompt(questions).then(answers => {
       break;
   }
 
-  
+
+  // Define the SVG content including the shape and text
   const svgContent = `
     <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
       ${shapeInstance.render()}
@@ -56,6 +68,7 @@ inquirer.prompt(questions).then(answers => {
     </svg>
   `;
 
+  // Write the SVG content to a file named logo.svg
   fs.writeFileSync('logo.svg', svgContent.trim());
   console.log('Generated logo.svg');
 });
